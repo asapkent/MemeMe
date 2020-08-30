@@ -13,6 +13,8 @@
 		9F95CF0A24F87EC10018BD7F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F95CF0824F87EC10018BD7F /* Main.storyboard */; };
 		9F95CF0C24F87EC70018BD7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F95CF0B24F87EC70018BD7F /* Assets.xcassets */; };
 		9F95CF0F24F87EC70018BD7F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F95CF0D24F87EC70018BD7F /* LaunchScreen.storyboard */; };
+		9F95CF1724FC18B30018BD7F /* textFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F95CF1624FC18B30018BD7F /* textFieldDelegate.swift */; };
+		9F95CF1924FC1ACD0018BD7F /* MemeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F95CF1824FC1ACD0018BD7F /* MemeData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		9F95CF0B24F87EC70018BD7F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F95CF0E24F87EC70018BD7F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9F95CF1024F87EC70018BD7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9F95CF1624FC18B30018BD7F /* textFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = textFieldDelegate.swift; sourceTree = "<group>"; };
+		9F95CF1824FC1ACD0018BD7F /* MemeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,8 @@
 				9F95CF0224F87EC10018BD7F /* AppDelegate.swift */,
 				9F95CF0424F87EC10018BD7F /* SceneDelegate.swift */,
 				9F95CF0624F87EC10018BD7F /* ViewController.swift */,
+				9F95CF1824FC1ACD0018BD7F /* MemeData.swift */,
+				9F95CF1624FC18B30018BD7F /* textFieldDelegate.swift */,
 				9F95CF0824F87EC10018BD7F /* Main.storyboard */,
 				9F95CF0B24F87EC70018BD7F /* Assets.xcassets */,
 				9F95CF0D24F87EC70018BD7F /* LaunchScreen.storyboard */,
@@ -140,6 +146,8 @@
 			files = (
 				9F95CF0724F87EC10018BD7F /* ViewController.swift in Sources */,
 				9F95CF0324F87EC10018BD7F /* AppDelegate.swift in Sources */,
+				9F95CF1924FC1ACD0018BD7F /* MemeData.swift in Sources */,
+				9F95CF1724FC18B30018BD7F /* textFieldDelegate.swift in Sources */,
 				9F95CF0524F87EC10018BD7F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
