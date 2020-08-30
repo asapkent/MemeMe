@@ -15,6 +15,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var imageViewOutlet: UIImageView!
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var cameraButtonOutlet: UIBarButtonItem!
+    @IBOutlet weak var toolbar: UIToolbar!
+    @IBOutlet weak var navBar: UINavigationBar!
+    
     
     let textfieldDelegate = textFieldDelegate()
     var image: UIImage!
@@ -132,8 +135,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func generateMemedImage() -> UIImage {
         
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
-        self.navigationController?.setToolbarHidden(true, animated: true)
+        toolbar.isHidden = true
+        navBar.isHidden = true
 
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
@@ -141,8 +144,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let image:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
-        self.navigationController?.setToolbarHidden(false, animated: true)
+        toolbar.isHidden = false
+        navBar.isHidden = false
 
         return image
     }
