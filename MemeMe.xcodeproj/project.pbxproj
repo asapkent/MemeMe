@@ -18,7 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9F95CEFF24F87EC10018BD7F /* ImagePicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImagePicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F95CEFF24F87EC10018BD7F /* MemeMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemeMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F95CF0224F87EC10018BD7F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F95CF0424F87EC10018BD7F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		9F95CF0624F87EC10018BD7F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -44,7 +44,7 @@
 		9F95CEF624F87EC10018BD7F = {
 			isa = PBXGroup;
 			children = (
-				9F95CF0124F87EC10018BD7F /* ImagePicker */,
+				9F95CF0124F87EC10018BD7F /* MemeMe */,
 				9F95CF0024F87EC10018BD7F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -52,12 +52,12 @@
 		9F95CF0024F87EC10018BD7F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9F95CEFF24F87EC10018BD7F /* ImagePicker.app */,
+				9F95CEFF24F87EC10018BD7F /* MemeMe.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		9F95CF0124F87EC10018BD7F /* ImagePicker */ = {
+		9F95CF0124F87EC10018BD7F /* MemeMe */ = {
 			isa = PBXGroup;
 			children = (
 				9F95CF0224F87EC10018BD7F /* AppDelegate.swift */,
@@ -70,15 +70,15 @@
 				9F95CF0D24F87EC70018BD7F /* LaunchScreen.storyboard */,
 				9F95CF1024F87EC70018BD7F /* Info.plist */,
 			);
-			path = ImagePicker;
+			path = MemeMe;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9F95CEFE24F87EC10018BD7F /* ImagePicker */ = {
+		9F95CEFE24F87EC10018BD7F /* MemeMe */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9F95CF1324F87EC70018BD7F /* Build configuration list for PBXNativeTarget "ImagePicker" */;
+			buildConfigurationList = 9F95CF1324F87EC70018BD7F /* Build configuration list for PBXNativeTarget "MemeMe" */;
 			buildPhases = (
 				9F95CEFB24F87EC10018BD7F /* Sources */,
 				9F95CEFC24F87EC10018BD7F /* Frameworks */,
@@ -88,9 +88,9 @@
 			);
 			dependencies = (
 			);
-			name = ImagePicker;
+			name = MemeMe;
 			productName = ImagePicker;
-			productReference = 9F95CEFF24F87EC10018BD7F /* ImagePicker.app */;
+			productReference = 9F95CEFF24F87EC10018BD7F /* MemeMe.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -108,7 +108,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9F95CEFA24F87EC10018BD7F /* Build configuration list for PBXProject "ImagePicker" */;
+			buildConfigurationList = 9F95CEFA24F87EC10018BD7F /* Build configuration list for PBXProject "MemeMe" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -121,7 +121,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9F95CEFE24F87EC10018BD7F /* ImagePicker */,
+				9F95CEFE24F87EC10018BD7F /* MemeMe */,
 			);
 		};
 /* End PBXProject section */
@@ -300,7 +300,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = AsapInc.ImagePicker;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = MemeMe;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -318,7 +318,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = AsapInc.ImagePicker;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = MemeMe;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -327,7 +327,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9F95CEFA24F87EC10018BD7F /* Build configuration list for PBXProject "ImagePicker" */ = {
+		9F95CEFA24F87EC10018BD7F /* Build configuration list for PBXProject "MemeMe" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9F95CF1124F87EC70018BD7F /* Debug */,
@@ -336,7 +336,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9F95CF1324F87EC70018BD7F /* Build configuration list for PBXNativeTarget "ImagePicker" */ = {
+		9F95CF1324F87EC70018BD7F /* Build configuration list for PBXNativeTarget "MemeMe" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9F95CF1424F87EC70018BD7F /* Debug */,
