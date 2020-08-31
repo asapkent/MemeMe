@@ -37,14 +37,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.topTextField.delegate = self.textfieldDelegate
         self.bottomTextField.delegate = self.textfieldDelegate
         
-        bottomTextField.defaultTextAttributes = memeTextAttributes
-        topTextField.defaultTextAttributes = memeTextAttributes
-        
-        topTextField.textAlignment = .center
-        bottomTextField.textAlignment = .center
-        
-        topTextField.text = "TOP"
-        bottomTextField.text = "BOTTOM"
+        setTextFields(textField: topTextField, text: "TOP")
+        setTextFields(textField: bottomTextField, text: "BOTTOM")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -106,6 +100,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
     
+    func setTextFields(textField: UITextField, text: String) {
+           textField.text = text
+           textField.defaultTextAttributes = memeTextAttributes
+           textField.textAlignment = .center
+           bottomTextField.defaultTextAttributes = memeTextAttributes
+           topTextField.defaultTextAttributes = memeTextAttributes
+       }
+    
     
     //MARK: Keyboard functions
     
@@ -135,19 +137,21 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func generateMemedImage() -> UIImage {
         
-        toolbar.isHidden = true
-        navBar.isHidden = true
+        configureBars(true)
 
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
         view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
         let image:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
+        configureBars(false)
         
-        toolbar.isHidden = false
-        navBar.isHidden = false
-
         return image
+    }
+    
+    func configureBars(_ on: Bool) {
+        toolbar.isHidden = on
+        navBar.isHidden = on
     }
     
      func saveMemedImage(memedImage: UIImage) {
