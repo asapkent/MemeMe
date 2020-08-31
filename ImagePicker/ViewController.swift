@@ -16,7 +16,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var cameraButtonOutlet: UIBarButtonItem!
     @IBOutlet weak var toolbar: UIToolbar!
-    @IBOutlet weak var navBar: UINavigationBar!
+    @IBOutlet weak var navBar: UIToolbar!
     
     
     let textfieldDelegate = textFieldDelegate()
@@ -34,8 +34,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewDidLoad()
         cameraButtonOutlet.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         
-        self.topTextField.delegate = self.textfieldDelegate
-        self.bottomTextField.delegate = self.textfieldDelegate
         
         setTextFields(textField: topTextField, text: "TOP")
         setTextFields(textField: bottomTextField, text: "BOTTOM")
@@ -101,11 +99,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func setTextFields(textField: UITextField, text: String) {
-           textField.text = text
-           textField.defaultTextAttributes = memeTextAttributes
+        self.topTextField.delegate = self.textfieldDelegate
+        self.bottomTextField.delegate = self.textfieldDelegate
+        textField.text = text
+        textField.defaultTextAttributes = memeTextAttributes
+           
            textField.textAlignment = .center
-           bottomTextField.defaultTextAttributes = memeTextAttributes
-           topTextField.defaultTextAttributes = memeTextAttributes
        }
     
     
