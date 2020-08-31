@@ -15,6 +15,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var imageViewOutlet: UIImageView!
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var cameraButtonOutlet: UIBarButtonItem!
+    @IBOutlet weak var toolbar: UIToolbar!
+    @IBOutlet weak var navBar: UINavigationBar!
+    
     
     let textfieldDelegate = textFieldDelegate()
     var image: UIImage!
@@ -34,14 +37,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.topTextField.delegate = self.textfieldDelegate
         self.bottomTextField.delegate = self.textfieldDelegate
         
-        bottomTextField.defaultTextAttributes = memeTextAttributes
-        topTextField.defaultTextAttributes = memeTextAttributes
-        
-        topTextField.textAlignment = .center
-        bottomTextField.textAlignment = .center
-        
-        topTextField.text = "TOP"
-        bottomTextField.text = "BOTTOM"
+        setTextFields(textField: topTextField, text: "TOP")
+        setTextFields(textField: bottomTextField, text: "BOTTOM")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -103,6 +100,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
     
+    func setTextFields(textField: UITextField, text: String) {
+           textField.text = text
+           textField.defaultTextAttributes = memeTextAttributes
+           textField.textAlignment = .center
+           bottomTextField.defaultTextAttributes = memeTextAttributes
+           topTextField.defaultTextAttributes = memeTextAttributes
+       }
+    
     
     //MARK: Keyboard functions
     
@@ -132,19 +137,21 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func generateMemedImage() -> UIImage {
         
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
-        self.navigationController?.setToolbarHidden(true, animated: true)
+        configureBars(true)
 
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
         view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
         let image:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
+        configureBars(false)
         
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
-        self.navigationController?.setToolbarHidden(false, animated: true)
-
         return image
+    }
+    
+    func configureBars(_ on: Bool) {
+        toolbar.isHidden = on
+        navBar.isHidden = on
     }
     
      func saveMemedImage(memedImage: UIImage) {
