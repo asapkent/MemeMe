@@ -20,6 +20,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     
     let textfieldDelegate = textFieldDelegate()
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var image: UIImage!
     var meme: MemeData!
     
@@ -156,6 +157,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
      func saveMemedImage(memedImage: UIImage) {
         let meme = MemeData(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imageViewOutlet.image!, memedImage: memedImage)
         self.meme = meme
+        appDelegate.memes.append(meme)
        }
     }
 
