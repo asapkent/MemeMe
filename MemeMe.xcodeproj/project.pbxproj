@@ -17,6 +17,7 @@
 		9F95CF1924FC1ACD0018BD7F /* MemeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F95CF1824FC1ACD0018BD7F /* MemeData.swift */; };
 		9FB45268250D780200B42343 /* MemeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB45267250D780200B42343 /* MemeCollectionViewController.swift */; };
 		9FB4526A250D78F700B42343 /* SentMemeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB45269250D78F700B42343 /* SentMemeTableViewController.swift */; };
+		9FB4526D251171C800B42343 /* MemeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB4526C251171C800B42343 /* MemeCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		9F95CF1824FC1ACD0018BD7F /* MemeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeData.swift; sourceTree = "<group>"; };
 		9FB45267250D780200B42343 /* MemeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeCollectionViewController.swift; sourceTree = "<group>"; };
 		9FB45269250D78F700B42343 /* SentMemeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentMemeTableViewController.swift; sourceTree = "<group>"; };
+		9FB4526C251171C800B42343 /* MemeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				9F95CF1824FC1ACD0018BD7F /* MemeData.swift */,
 				9F95CF1624FC18B30018BD7F /* textFieldDelegate.swift */,
 				9F95CF0824F87EC10018BD7F /* Main.storyboard */,
+				9FB4526C251171C800B42343 /* MemeCollectionViewCell.swift */,
 				9F95CF0B24F87EC70018BD7F /* Assets.xcassets */,
 				9F95CF0D24F87EC70018BD7F /* LaunchScreen.storyboard */,
 				9F95CF1024F87EC70018BD7F /* Info.plist */,
@@ -152,6 +155,7 @@
 			files = (
 				9F95CF0724F87EC10018BD7F /* ViewController.swift in Sources */,
 				9F95CF0324F87EC10018BD7F /* AppDelegate.swift in Sources */,
+				9FB4526D251171C800B42343 /* MemeCollectionViewCell.swift in Sources */,
 				9FB4526A250D78F700B42343 /* SentMemeTableViewController.swift in Sources */,
 				9F95CF1924FC1ACD0018BD7F /* MemeData.swift in Sources */,
 				9F95CF1724FC18B30018BD7F /* textFieldDelegate.swift in Sources */,
@@ -302,7 +306,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B8RKBX27PK;
-				INFOPLIST_FILE = ImagePicker/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/MemeMe/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -320,7 +324,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B8RKBX27PK;
-				INFOPLIST_FILE = ImagePicker/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/MemeMe/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
