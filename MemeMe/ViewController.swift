@@ -23,6 +23,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var image: UIImage!
     var meme: MemeData!
+    var sentTopText: String!
+    var sentBottomText: String!
+    var sentImage: UIImage!
     
     let memeTextAttributes: [NSAttributedString.Key: Any] = [
         NSAttributedString.Key.strokeColor: UIColor.black,

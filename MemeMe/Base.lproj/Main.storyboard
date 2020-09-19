@@ -209,19 +209,19 @@
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="memeCollectionViewCell" id="ux5-NW-Fcf" customClass="MemeCollectionViewCell" customModule="MemeMe" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="159" height="149"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="8I5-FM-jCt" customClass="MemeCollectionViewCell" customModule="MemeMe" customModuleProvider="target">
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" insetsLayoutMarginsFromSafeArea="NO" id="8I5-FM-jCt" customClass="MemeCollectionViewCell" customModule="MemeMe" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="159" height="149"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CAA-7D-sOk">
-                                            <rect key="frame" x="8" y="13" width="143" height="128"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CAA-7D-sOk">
+                                            <rect key="frame" x="0.0" y="0.0" width="159" height="149"/>
                                         </imageView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="CAA-7D-sOk" secondAttribute="trailing" constant="8" id="Llg-rB-yPD"/>
-                                        <constraint firstItem="CAA-7D-sOk" firstAttribute="top" secondItem="8I5-FM-jCt" secondAttribute="top" constant="13" id="QRa-5Z-LBa"/>
-                                        <constraint firstItem="CAA-7D-sOk" firstAttribute="leading" secondItem="8I5-FM-jCt" secondAttribute="leading" constant="8" id="TDO-f5-dgE"/>
-                                        <constraint firstAttribute="bottom" secondItem="CAA-7D-sOk" secondAttribute="bottom" constant="8" id="w1Q-xc-cq0"/>
+                                        <constraint firstItem="CAA-7D-sOk" firstAttribute="top" secondItem="8I5-FM-jCt" secondAttribute="top" id="4IO-mT-gog"/>
+                                        <constraint firstItem="CAA-7D-sOk" firstAttribute="leading" secondItem="8I5-FM-jCt" secondAttribute="leading" id="j5Y-eP-FFL"/>
+                                        <constraint firstAttribute="bottom" secondItem="CAA-7D-sOk" secondAttribute="bottom" id="tJ5-Jv-fVp"/>
+                                        <constraint firstAttribute="trailing" secondItem="CAA-7D-sOk" secondAttribute="trailing" id="zZA-Zm-s7E"/>
                                     </constraints>
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="159" height="149"/>
@@ -246,6 +246,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="flowLayout" destination="BTc-gd-bsE" id="5hX-Z0-9S9"/>
+                        <outlet property="memeCollectionView" destination="o9F-ac-Ejc" id="KE0-iv-9oI"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EUA-Yj-fjw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
