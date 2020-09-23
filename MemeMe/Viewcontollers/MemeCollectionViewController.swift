@@ -61,11 +61,16 @@ class MemeCollectionViewController: UICollectionViewController {
         override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "memeCollectionViewCell", for: indexPath) as! MemeCollectionViewCell
                let meme = memes[indexPath.row]
+            
+            cell.contentView.frame = cell.bounds
+            cell.contentView.autoresizingMask = [.flexibleLeftMargin, .flexibleWidth, .flexibleRightMargin, .flexibleTopMargin, .flexibleHeight, .flexibleBottomMargin]
                
                cell.memeiamge.image = meme.memedImage
                
                return cell
            }
+        
+        
         
         override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
                 
