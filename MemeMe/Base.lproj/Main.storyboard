@@ -70,7 +70,7 @@
         <!--Title-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="viewcontroller" id="BYZ-38-t0r" customClass="ViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="viewcontroller" id="BYZ-38-t0r" customClass="MeViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -203,21 +203,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="BTc-gd-bsE">
-                            <size key="itemSize" width="186" height="197"/>
+                            <size key="itemSize" width="138" height="175"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="memeCollectionViewCell" id="ux5-NW-Fcf" customClass="MemeCollectionViewCell" customModule="MemeMe" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="186" height="197"/>
+                                <rect key="frame" x="0.0" y="0.0" width="138" height="175"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" insetsLayoutMarginsFromSafeArea="NO" id="8I5-FM-jCt" customClass="MemeCollectionViewCell" customModule="MemeMe" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="186" height="197"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="138" height="175"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CAA-7D-sOk">
-                                            <rect key="frame" x="8" y="8" width="186" height="197"/>
+                                            <rect key="frame" x="8" y="8" width="138" height="175"/>
                                         </imageView>
                                     </subviews>
                                     <constraints>
@@ -227,7 +227,7 @@
                                         <constraint firstAttribute="trailing" secondItem="CAA-7D-sOk" secondAttribute="trailing" constant="-8" id="zZA-Zm-s7E"/>
                                     </constraints>
                                 </collectionViewCellContentView>
-                                <size key="customSize" width="186" height="197"/>
+                                <size key="customSize" width="138" height="175"/>
                                 <connections>
                                     <outlet property="memeiamge" destination="CAA-7D-sOk" id="7p3-n9-giH"/>
                                 </connections>
@@ -235,7 +235,7 @@
                         </cells>
                         <connections>
                             <outlet property="dataSource" destination="Rzs-AW-lTi" id="cFA-wN-LWL"/>
-                            <outlet property="delegate" destination="Rzs-AW-lTi" id="39Q-gH-358"/>
+                            <outlet property="delegate" destination="Rzs-AW-lTi" id="4lG-ZI-7xk"/>
                         </connections>
                     </collectionView>
                     <tabBarItem key="tabBarItem" title="" image="square.grid.3x3" catalog="system" id="W4o-kM-lGF"/>
@@ -254,7 +254,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EUA-Yj-fjw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-9" y="335"/>
+            <point key="canvasLocation" x="-10.144927536231885" y="334.82142857142856"/>
         </scene>
     </scenes>
     <resources>

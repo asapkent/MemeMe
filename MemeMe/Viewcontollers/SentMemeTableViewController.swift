@@ -33,7 +33,7 @@ class SentMemeTableViewController: UIViewController, UITableViewDelegate, UITabl
     // When the user taps on the add button
     @IBAction func addButtonTapped(_ sender: Any) {
         
-        let memeGeneratorVC = storyboard?.instantiateViewController(withIdentifier: "viewcontroller") as! ViewController
+        let memeGeneratorVC = storyboard?.instantiateViewController(withIdentifier: "viewcontroller") as! MeViewController
         
         present(memeGeneratorVC, animated: true, completion: nil)
         
@@ -65,7 +65,7 @@ extension SentMemeTableViewController {
     // Present a meme generator view controller when user taps on cell
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let memeGeneratorVC = storyboard?.instantiateViewController(withIdentifier: "viewcontroller") as! ViewController
+        let memeGeneratorVC = storyboard?.instantiateViewController(withIdentifier: "viewcontroller") as! MeViewController
         
         memeGeneratorVC.sentTopText = memes[indexPath.row].topText
         memeGeneratorVC.sentBottomText = memes[indexPath.row].bottomText
