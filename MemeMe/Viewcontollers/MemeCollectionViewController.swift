@@ -1,11 +1,3 @@
-//
-//  MemeCollectionViewController.swift
-//  MemeMe
-//
-//  Created by Robert Jeffers on 9/12/20.
-//  Copyright © 2020 AsapInc. All rights reserved.
-//
-
 import UIKit
 
 class MemeCollectionViewController: UICollectionViewController {
@@ -17,10 +9,12 @@ class MemeCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        //memes = appDelegate.memes
-
+        memeCollectionView.delegate = self
+        memeCollectionView.dataSource = self
         configureLayoutFlow()
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        memes = appDelegate.memes
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -29,26 +23,23 @@ class MemeCollectionViewController: UICollectionViewController {
           let appDelegate = UIApplication.shared.delegate as! AppDelegate
           memes = appDelegate.memes
         
-          collectionView?.reloadData()
+          memeCollectionView.reloadData()
       }
     
     func configureLayoutFlow() {
         
-        let sectionInsets = UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3)
 
-        let itemPerRow:CGFloat = 3.0
-        let space:CGFloat = sectionInsets.left * (itemPerRow + 1)
-        let availableWidth = view.frame.width - space
-                let widthPerItem = availableWidth / itemPerRow
-
-        flowLayout.minimumInteritemSpacing = 3
-        flowLayout.minimumLineSpacing = 3
-        flowLayout.sectionInset = sectionInsets
-        flowLayout.itemSize = CGSize(width: widthPerItem, height: widthPerItem)
+        let itemSize = UIScreen.main.bounds.width/3 - 3
+              
+              flowLayout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 10, right: 0)
+              flowLayout.itemSize = CGSize(width: itemSize, height: itemSize)
+              
+              flowLayout.minimumInteritemSpacing = 3
+              flowLayout.minimumLineSpacing = 3
     }
 
     @IBAction func addButtonPressed(_ sender: Any) {
-        let vc = storyboard?.instantiateViewController(identifier: "viewcontroller") as! ViewController
+        let vc = storyboard?.instantiateViewController(identifier: "viewcontroller") as! MeViewController
         present(vc, animated: true)
     }
 }
@@ -62,25 +53,22 @@ class MemeCollectionViewController: UICollectionViewController {
                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "memeCollectionViewCell", for: indexPath) as! MemeCollectionViewCell
                let meme = memes[indexPath.row]
             
-            cell.contentView.frame = cell.bounds
-            cell.contentView.autoresizingMask = [.flexibleLeftMargin, .flexibleWidth, .flexibleRightMargin, .flexibleTopMargin, .flexibleHeight, .flexibleBottomMargin]
+            //cell.contentView.frame = cell.bounds
+            //cell.contentView.autoresizingMask = [.flexibleLeftMargin, .flexibleWidth, .flexibleRightMargin, .flexibleTopMargin, .flexibleHeight, .flexibleBottomMargin]
                
                cell.memeiamge.image = meme.memedImage
                
                return cell
-           }
-        
-        
+        }
         
         override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
                 
-                let memeGeneratorVC = storyboard?.instantiateViewController(withIdentifier: "viewcontroller") as! ViewController
+            let vc = storyboard?.instantiateViewController(withIdentifier: "viewcontroller") as! MeViewController
                 
-            memeGeneratorVC.sentTopText = memes[indexPath.row].topText
-            memeGeneratorVC.sentBottomText = memes[indexPath.row].bottomText
-            memeGeneratorVC.sentImage = memes[indexPath.row].originalImage
-                
-                present(memeGeneratorVC, animated: true)
-                
-            }
+            vc.sentTopText = memes[indexPath.row].topText
+            vc.sentBottomText = memes[indexPath.row].bottomText
+            vc.sentImage = memes[indexPath.row].originalImage
+            
+            present(vc, animated: true, completion: nil)
+        }
     }

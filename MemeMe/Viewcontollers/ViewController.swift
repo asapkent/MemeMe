@@ -1,166 +1,228 @@
-//
-//  ViewController.swift
-//  ImagePicker
-//
-//  Created by Robert Jeffers on 8/27/20.
-//  Copyright © 2020 AsapInc. All rights reserved.
-//
-
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+class MeViewController: UIViewController {
     
-    @IBOutlet weak var shareButtonOutlet: UIBarButtonItem!
+    @IBOutlet weak var imagePickerView: UIImageView!
+    @IBOutlet weak var shareButton: UIBarButtonItem!
+    @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var topTextField: UITextField!
-    @IBOutlet weak var imageViewOutlet: UIImageView!
     @IBOutlet weak var bottomTextField: UITextField!
-    @IBOutlet weak var cameraButtonOutlet: UIBarButtonItem!
-    @IBOutlet weak var toolbar: UIToolbar!
-    @IBOutlet weak var navBar: UIToolbar!
+    @IBOutlet weak var bottomToolbar: UIToolbar!
+    @IBOutlet weak var topToolBar: UIToolbar!
+    var toolBarsState = true
     
-    
-    let textfieldDelegate = textFieldDelegate()
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    var image: UIImage!
-    var meme: MemeData!
-    var sentTopText: String!
-    var sentBottomText: String!
-    var sentImage: UIImage!
+    var activeTextField: UITextField?
     
     let memeTextAttributes: [NSAttributedString.Key: Any] = [
-        NSAttributedString.Key.strokeColor: UIColor.black,
-        NSAttributedString.Key.foregroundColor: UIColor.white,
         NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-        NSAttributedString.Key.strokeWidth:  -3.0
+        NSAttributedString.Key.foregroundColor: UIColor.white,
+        NSAttributedString.Key.strokeColor: UIColor.black,
+        NSAttributedString.Key.strokeWidth: -3.0
     ]
+    
+    var sentTopText: String?
+    var sentBottomText: String?
+    var sentImage: UIImage?
+    var meme: MemeData!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        cameraButtonOutlet.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         
+        let tapAnywhere = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
+        self.view.addGestureRecognizer(tapAnywhere)
         
-        setTextFields(textField: topTextField, text: "TOP")
-        setTextFields(textField: bottomTextField, text: "BOTTOM")
+        bottomTextField.delegate = self
+        topTextField.delegate = self
+        textFieldSetup(topTextField)
+        textFieldSetup(bottomTextField)
+        shareButton.isEnabled = false
+    
+        if sentTopText != nil && sentBottomText != nil && sentImage != nil{
+            
+            topTextField.text = sentTopText
+            bottomTextField.text = sentBottomText
+            imagePickerView.image = sentImage
+            
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        super.viewWillAppear(true)
+        if let meme = meme {
+                imagePickerView.image = meme.memedImage
+        }
+        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         subscribeToKeyboardNotifications()
     }
     
-    
     override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        unsubscribeFromKeyboardNotifications()
+        super.viewWillDisappear(true)
+        unsubscribeToKeyboardNotifications()
+    }
+    
+    func textFieldSetup(_ textfield: UITextField) {
+        
+        
+        textfield.defaultTextAttributes = memeTextAttributes
+        textfield.textAlignment = .center
+        if textfield == topTextField && topTextField.text == "" {
+            textfield.text = "TOP"
+        }
+        if textfield == bottomTextField && bottomTextField.text == "" {
+            bottomTextField.text = "BOTTOM"
+        }
+        
+    }
+    
+
+    func generateMemedImage() -> UIImage {
+        bottomToolbar.isHidden = true
+        topToolBar.isHidden = true
+       
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        bottomToolbar.isHidden = false
+        topToolBar.isHidden = false
+        
+        return memedImage
+    }
+    
+    func save() {
+      
+        let meme = MemeData(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: generateMemedImage())
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.memes.append(meme)
+        print(appDelegate.memes.count)
+    }
+    
+    
+    @IBAction func shareButtonTapped(_ sender: Any) {
+        let shareController = UIActivityViewController(activityItems: [generateMemedImage()], applicationActivities: [])
+        shareController.completionWithItemsHandler = {(activity: UIActivity.ActivityType?, completed: Bool,  _: [Any]?, error: Error?) in
+            if completed == false {
+                return
+            }
+            self.save()
+        }
+        
+        self.present(shareController, animated: true, completion: nil)
+    }
+    
+    @IBAction func doneButtonTapped(_ sender: Any) {
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
+        activeTextField?.resignFirstResponder()
+        
     }
 
+    
+    
+}
 
-    @IBAction func pickButtonTapped(_ sender: Any) {
+extension MeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    @IBAction func pickFromLibraryButtonPressed(_ sender: Any) {
+        
+        setupPickerController(sourceType: .photoLibrary)
+    }
+    
+    @IBAction func pickFromCameraButtonPressed(_ sender: Any) {
+        
+       setupPickerController(sourceType: .camera)
+        
+    }
+    
+    func setupPickerController(sourceType: UIImagePickerController.SourceType){
+        
         let pickerController = UIImagePickerController()
+        pickerController.allowsEditing = true
         pickerController.delegate = self
-        pickerController.sourceType = .photoLibrary
-        present(pickerController, animated: true)
+        pickerController.sourceType = sourceType
+        present(pickerController, animated: true, completion: nil)
+        
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
-        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-                  imageViewOutlet.image = image
+        if let imageSelection = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            
+            imagePickerView.image = imageSelection
+        }
+        else if let imageSelection = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            imagePickerView.image = imageSelection
+            
         }
         
+        shareButton.isEnabled = true
         dismiss(animated: true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func shareButtonPressed(_ sender: Any) {
-        let shareMeme = generateMemedImage()
-        let controller = UIActivityViewController(activityItems:[shareMeme], applicationActivities: nil)
-        controller.completionWithItemsHandler = { (activityType, completed, returnedItems, activityError) in
-            
-            if completed {
-                self.saveMemedImage(memedImage: shareMeme)
-            }
-        }
-        present(controller, animated: true, completion: nil)
+    
+}
+
+extension MeViewController: UITextFieldDelegate {
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        
+        activeTextField = textField
+        textField.text = ""
+        
+        return true
     }
     
-    @IBAction func camerabuttonPressed(_ sender: Any) {
-        let pickerController = UIImagePickerController()
-        pickerController.delegate = self
-        pickerController.sourceType = .camera
-        present(pickerController, animated: true, completion: nil)
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        textField.resignFirstResponder()
+        return true
     }
-    
-    @IBAction func cancelButtonPressed(_ sender: Any) {
-        dismiss(animated: true) {
-            self.imageViewOutlet.image = nil
-            self.topTextField.text = "TOP"
-            self.bottomTextField.text = "BOTTOM"
-        }
-    }
-    
-    func setTextFields(textField: UITextField, text: String) {
-        self.topTextField.delegate = self.textfieldDelegate
-        self.bottomTextField.delegate = self.textfieldDelegate
-        textField.text = text
-        textField.defaultTextAttributes = memeTextAttributes
-           
-           textField.textAlignment = .center
-       }
-    
-    
-    //MARK: Keyboard functions
-    
-    @objc func keyboardWillShow(_ notification:Notification) {
-         view.frame.origin.y -= getKeyboardHeight(notification)
-     }
-     
-     @objc func keyboardWillHide(_ notification:Notification) {
-          view.frame.origin.y = 0
-     }
-    
-    func getKeyboardHeight(_ notification:Notification) -> CGFloat {
-           let userInfo = notification.userInfo
-           let keyboardSize = userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue // of CGRect
-           return keyboardSize.cgRectValue.height
-       }
     
     func subscribeToKeyboardNotifications() {
+        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
+    
+    func getKeyboardHeight(_ notification: Notification) -> CGFloat {
+        
+        let userInfo = notification.userInfo
+        let keyboardSize = userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue
+        
+        return keyboardSize.cgRectValue.height
+        
+    }
 
-    func unsubscribeFromKeyboardNotifications() {
+    @objc func keyboardWillShow(_ notification:Notification) {
+        
+        if activeTextField == bottomTextField {
+            view.frame.origin.y -= getKeyboardHeight(notification)
+        }
+        
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+        view.frame.origin.y = 0.0
+        
+    }
+    
+    func unsubscribeToKeyboardNotifications() {
+        
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-    }
-      // MARK: Meme Object
-    
-    func generateMemedImage() -> UIImage {
-        
-        configureBars(true)
-
-        // Render view to an image
-        UIGraphicsBeginImageContext(self.view.frame.size)
-        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
-        let image:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        configureBars(false)
-        
-        return image
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    func configureBars(_ on: Bool) {
-        toolbar.isHidden = on
-        navBar.isHidden = on
-    }
-    
-     func saveMemedImage(memedImage: UIImage) {
-        let meme = MemeData(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imageViewOutlet.image!, memedImage: memedImage)
-        self.meme = meme
-        appDelegate.memes.append(meme)
-       }
-    }
+}
 

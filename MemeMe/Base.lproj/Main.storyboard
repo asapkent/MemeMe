@@ -37,17 +37,17 @@
                     <navigationItem key="navigationItem" title="Sent Memes" id="zyE-F5-0G0">
                         <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="daS-YF-WM3">
                             <connections>
-                                <action selector="addButtonPressed:" destination="L5n-Zd-cSq" id="4pK-Oo-SZl"/>
+                                <action selector="addButtonTapped:" destination="L5n-Zd-cSq" id="afR-5g-Xsg"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="sentMemeTableView" destination="zT9-ni-D42" id="OJT-KC-ebX"/>
+                        <outlet property="sentMemeTableview" destination="zT9-ni-D42" id="6HU-3Z-znS"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qkg-WM-vHs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-90" y="-319"/>
+            <point key="canvasLocation" x="-10" y="-331"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Aft-Re-Dg4">
@@ -70,7 +70,7 @@
         <!--Title-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="viewcontroller" id="BYZ-38-t0r" customClass="ViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="viewcontroller" id="BYZ-38-t0r" customClass="MeViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -83,13 +83,13 @@
                                 <items>
                                     <barButtonItem image="camera" catalog="system" width="430.5" id="sxq-lP-szF">
                                         <connections>
-                                            <action selector="camerabuttonPressed:" destination="BYZ-38-t0r" id="TWX-KK-HQK"/>
+                                            <action selector="pickFromCameraButtonPressed:" destination="BYZ-38-t0r" id="pJv-mi-FWs"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem width="263" style="plain" systemItem="fixedSpace" id="iqJ-oI-Os4"/>
                                     <barButtonItem title="Album" width="444.5" id="MeF-A2-bAl">
                                         <connections>
-                                            <action selector="pickButtonTapped:" destination="BYZ-38-t0r" id="maA-Ev-yUI"/>
+                                            <action selector="pickFromLibraryButtonPressed:" destination="BYZ-38-t0r" id="d5a-Dk-BmH"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -99,13 +99,13 @@
                                 <items>
                                     <barButtonItem image="square.and.arrow.up" catalog="system" id="IFm-yM-IKv">
                                         <connections>
-                                            <action selector="shareButtonPressed:" destination="BYZ-38-t0r" id="DRj-jM-uH6"/>
+                                            <action selector="shareButtonTapped:" destination="BYZ-38-t0r" id="Iu6-PM-Cwv"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem width="274" style="plain" systemItem="fixedSpace" id="ZXH-2a-n5h"/>
                                     <barButtonItem title="Cancel" width="388" id="bhf-xe-avj">
                                         <connections>
-                                            <action selector="cancelButtonPressed:" destination="BYZ-38-t0r" id="bxK-uT-TBQ"/>
+                                            <action selector="doneButtonTapped:" destination="BYZ-38-t0r" id="3Xr-MP-Mto"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -147,18 +147,18 @@
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="w5K-mj-8DA"/>
                     <connections>
-                        <outlet property="bottomTextField" destination="eWH-pg-wEP" id="AP4-JU-RGl"/>
-                        <outlet property="cameraButtonOutlet" destination="sxq-lP-szF" id="Fcn-LA-FJa"/>
-                        <outlet property="imageViewOutlet" destination="IRQ-nU-Uxq" id="R3X-mG-KnD"/>
-                        <outlet property="navBar" destination="FV1-jN-8re" id="AWD-Z9-OXd"/>
-                        <outlet property="shareButtonOutlet" destination="IFm-yM-IKv" id="qps-w2-bdf"/>
-                        <outlet property="toolbar" destination="Bxd-Zm-Dv4" id="yHp-dV-F1v"/>
-                        <outlet property="topTextField" destination="4uX-wq-9W4" id="eaW-RV-Ppk"/>
+                        <outlet property="bottomTextField" destination="eWH-pg-wEP" id="QgJ-bQ-u0f"/>
+                        <outlet property="bottomToolbar" destination="Bxd-Zm-Dv4" id="Fc9-c5-2R0"/>
+                        <outlet property="cameraButton" destination="sxq-lP-szF" id="eYG-jk-lH2"/>
+                        <outlet property="imagePickerView" destination="IRQ-nU-Uxq" id="yYg-aD-QUa"/>
+                        <outlet property="shareButton" destination="IFm-yM-IKv" id="yEq-Nn-zjU"/>
+                        <outlet property="topTextField" destination="4uX-wq-9W4" id="9Xn-zQ-jRj"/>
+                        <outlet property="topToolBar" destination="FV1-jN-8re" id="G1f-GC-Nb5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1125" y="351"/>
+            <point key="canvasLocation" x="1025" y="104"/>
         </scene>
         <!--Item-->
         <scene sceneID="4a1-aC-Iv4">
@@ -203,21 +203,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="BTc-gd-bsE">
-                            <size key="itemSize" width="186" height="197"/>
+                            <size key="itemSize" width="138" height="175"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="memeCollectionViewCell" id="ux5-NW-Fcf" customClass="MemeCollectionViewCell" customModule="MemeMe" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="186" height="197"/>
+                                <rect key="frame" x="0.0" y="0.0" width="138" height="175"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" insetsLayoutMarginsFromSafeArea="NO" id="8I5-FM-jCt" customClass="MemeCollectionViewCell" customModule="MemeMe" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="186" height="197"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="138" height="175"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CAA-7D-sOk">
-                                            <rect key="frame" x="8" y="8" width="186" height="197"/>
+                                            <rect key="frame" x="8" y="8" width="138" height="175"/>
                                         </imageView>
                                     </subviews>
                                     <constraints>
@@ -227,7 +227,7 @@
                                         <constraint firstAttribute="trailing" secondItem="CAA-7D-sOk" secondAttribute="trailing" constant="-8" id="zZA-Zm-s7E"/>
                                     </constraints>
                                 </collectionViewCellContentView>
-                                <size key="customSize" width="186" height="197"/>
+                                <size key="customSize" width="138" height="175"/>
                                 <connections>
                                     <outlet property="memeiamge" destination="CAA-7D-sOk" id="7p3-n9-giH"/>
                                 </connections>
@@ -235,7 +235,7 @@
                         </cells>
                         <connections>
                             <outlet property="dataSource" destination="Rzs-AW-lTi" id="cFA-wN-LWL"/>
-                            <outlet property="delegate" destination="Rzs-AW-lTi" id="39Q-gH-358"/>
+                            <outlet property="delegate" destination="Rzs-AW-lTi" id="4lG-ZI-7xk"/>
                         </connections>
                     </collectionView>
                     <tabBarItem key="tabBarItem" title="" image="square.grid.3x3" catalog="system" id="W4o-kM-lGF"/>
@@ -254,7 +254,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EUA-Yj-fjw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-10.144927536231885" y="350.89285714285711"/>
+            <point key="canvasLocation" x="-10.144927536231885" y="334.82142857142856"/>
         </scene>
     </scenes>
     <resources>
