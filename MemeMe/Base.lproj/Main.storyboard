@@ -37,12 +37,12 @@
                     <navigationItem key="navigationItem" title="Sent Memes" id="zyE-F5-0G0">
                         <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="daS-YF-WM3">
                             <connections>
-                                <action selector="addButtonPressed:" destination="L5n-Zd-cSq" id="4pK-Oo-SZl"/>
+                                <action selector="addButtonTapped:" destination="L5n-Zd-cSq" id="afR-5g-Xsg"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="sentMemeTableView" destination="zT9-ni-D42" id="OJT-KC-ebX"/>
+                        <outlet property="sentMemeTableview" destination="zT9-ni-D42" id="6HU-3Z-znS"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qkg-WM-vHs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -83,13 +83,13 @@
                                 <items>
                                     <barButtonItem image="camera" catalog="system" width="430.5" id="sxq-lP-szF">
                                         <connections>
-                                            <action selector="camerabuttonPressed:" destination="BYZ-38-t0r" id="TWX-KK-HQK"/>
+                                            <action selector="pickFromCameraButtonPressed:" destination="BYZ-38-t0r" id="pJv-mi-FWs"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem width="263" style="plain" systemItem="fixedSpace" id="iqJ-oI-Os4"/>
                                     <barButtonItem title="Album" width="444.5" id="MeF-A2-bAl">
                                         <connections>
-                                            <action selector="pickButtonTapped:" destination="BYZ-38-t0r" id="maA-Ev-yUI"/>
+                                            <action selector="pickFromLibraryButtonPressed:" destination="BYZ-38-t0r" id="d5a-Dk-BmH"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -99,13 +99,13 @@
                                 <items>
                                     <barButtonItem image="square.and.arrow.up" catalog="system" id="IFm-yM-IKv">
                                         <connections>
-                                            <action selector="shareButtonPressed:" destination="BYZ-38-t0r" id="DRj-jM-uH6"/>
+                                            <action selector="shareButtonTapped:" destination="BYZ-38-t0r" id="Iu6-PM-Cwv"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem width="274" style="plain" systemItem="fixedSpace" id="ZXH-2a-n5h"/>
                                     <barButtonItem title="Cancel" width="388" id="bhf-xe-avj">
                                         <connections>
-                                            <action selector="cancelButtonPressed:" destination="BYZ-38-t0r" id="bxK-uT-TBQ"/>
+                                            <action selector="doneButtonTapped:" destination="BYZ-38-t0r" id="3Xr-MP-Mto"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -147,13 +147,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="w5K-mj-8DA"/>
                     <connections>
-                        <outlet property="bottomTextField" destination="eWH-pg-wEP" id="AP4-JU-RGl"/>
-                        <outlet property="cameraButtonOutlet" destination="sxq-lP-szF" id="Fcn-LA-FJa"/>
-                        <outlet property="imageViewOutlet" destination="IRQ-nU-Uxq" id="R3X-mG-KnD"/>
-                        <outlet property="navBar" destination="FV1-jN-8re" id="AWD-Z9-OXd"/>
-                        <outlet property="shareButtonOutlet" destination="IFm-yM-IKv" id="qps-w2-bdf"/>
-                        <outlet property="toolbar" destination="Bxd-Zm-Dv4" id="yHp-dV-F1v"/>
-                        <outlet property="topTextField" destination="4uX-wq-9W4" id="eaW-RV-Ppk"/>
+                        <outlet property="bottomTextField" destination="eWH-pg-wEP" id="QgJ-bQ-u0f"/>
+                        <outlet property="bottomToolbar" destination="Bxd-Zm-Dv4" id="Fc9-c5-2R0"/>
+                        <outlet property="cameraButton" destination="sxq-lP-szF" id="eYG-jk-lH2"/>
+                        <outlet property="imagePickerView" destination="IRQ-nU-Uxq" id="yYg-aD-QUa"/>
+                        <outlet property="shareButton" destination="IFm-yM-IKv" id="yEq-Nn-zjU"/>
+                        <outlet property="topTextField" destination="4uX-wq-9W4" id="9Xn-zQ-jRj"/>
+                        <outlet property="topToolBar" destination="FV1-jN-8re" id="G1f-GC-Nb5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

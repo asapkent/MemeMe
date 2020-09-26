@@ -74,12 +74,12 @@ class MemeCollectionViewController: UICollectionViewController {
         
         override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
                 
-                let memeGeneratorVC = storyboard?.instantiateViewController(withIdentifier: "viewcontroller") as! ViewController
+            let memeGeneratorVC = storyboard?.instantiateViewController(withIdentifier: "viewcontroller") as! ViewController
                 
             memeGeneratorVC.sentTopText = memes[indexPath.row].topText
             memeGeneratorVC.sentBottomText = memes[indexPath.row].bottomText
-            memeGeneratorVC.sentImage = memes[indexPath.row].originalImage
+            memeGeneratorVC.sentImage = memes[indexPath.row].memedImage
                 
-                present(memeGeneratorVC, animated: true)
+            present(memeGeneratorVC, animated: true)
         }
     }
