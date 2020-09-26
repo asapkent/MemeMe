@@ -22,10 +22,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     let textfieldDelegate = textFieldDelegate()
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var image: UIImage!
-    var meme: MemeData!
-    var sentTopText: String!
-    var sentBottomText: String!
-    var sentImage: UIImage!
+    //var meme: MemeData!
+    
+    
+    var sentTopText: String?
+    var sentBottomText: String?
+    var sentImage: UIImage?
     
     let memeTextAttributes: [NSAttributedString.Key: Any] = [
         NSAttributedString.Key.strokeColor: UIColor.black,
@@ -34,6 +36,23 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         NSAttributedString.Key.strokeWidth:  -3.0
     ]
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        subscribeToKeyboardNotifications()
+        
+        if(self.sentImage != nil){
+                   self.imageViewOutlet.image = self.sentImage
+               }
+               
+               if(self.sentTopText != nil){
+                   self.topTextField.text = self.sentTopText!
+               }
+               
+               if(self.sentBottomText != nil){
+                   self.bottomTextField.text = self.sentBottomText!
+               }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         cameraButtonOutlet.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
@@ -41,13 +60,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         setTextFields(textField: topTextField, text: "TOP")
         setTextFields(textField: bottomTextField, text: "BOTTOM")
+        //checkIfTextfieldAreEmpty(topTextField)
+        //checkIfTextfieldAreEmpty(bottomTextField)
+        
+        //if sentTopText != nil && sentBottomText != nil && sentImage != nil{
+                   
+           //topTextField.text = sentTopText
+           //bottomTextField.text = sentBottomText
+           //imageViewOutlet.image = sentImage
+        //}
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        subscribeToKeyboardNotifications()
-    }
-    
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -108,7 +130,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         textField.text = text
         textField.defaultTextAttributes = memeTextAttributes
            
-           textField.textAlignment = .center
+        textField.textAlignment = .center
        }
     
     
@@ -159,8 +181,20 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
      func saveMemedImage(memedImage: UIImage) {
         let meme = MemeData(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imageViewOutlet.image!, memedImage: memedImage)
-        self.meme = meme
+        //self.meme = meme
         appDelegate.memes.append(meme)
        }
+    
+    func checkIfTextfieldAreEmpty( _ textfield: UITextField) {
+        if sentTopText != nil && sentBottomText != nil && sentImage != nil{
+                   
+            if textfield == topTextField && topTextField.text == "" {
+                textfield.text = "TOP"
+            }
+            if textfield == bottomTextField && bottomTextField.text == "" {
+                bottomTextField.text = "BOTTOM"
+            }
+        }
+      }
     }
 

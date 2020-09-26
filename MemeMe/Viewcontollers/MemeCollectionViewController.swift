@@ -81,6 +81,5 @@ class MemeCollectionViewController: UICollectionViewController {
             memeGeneratorVC.sentImage = memes[indexPath.row].originalImage
                 
                 present(memeGeneratorVC, animated: true)
-                
-            }
+        }
     }

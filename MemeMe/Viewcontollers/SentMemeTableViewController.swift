@@ -3,18 +3,18 @@
     class SentMemeTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // Variable to hold the saved memes
-    var memes = [MemeData]()
-    // Instance of the tableview
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        var memes = [MemeData]()
+
+
     
     @IBOutlet weak var sentMemeTableView: UITableView!
     
     
     override func viewDidLoad() {
     super.viewDidLoad()
-    sentMemeTableView.reloadData()
-    
-    
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    sentMemeTableView.reloadData()
     memes = appDelegate.memes
     }
         
@@ -28,12 +28,13 @@
     }
         @IBAction func addButtonPressed(_ sender: Any) {
             let vc = storyboard?.instantiateViewController(withIdentifier: "viewcontroller") as! ViewController
-                    
-                    present(vc, animated: true, completion: nil)
+            present(vc, animated: true, completion: nil)
         }
     }
     
     extension SentMemeTableViewController{
+    
+        
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return memes.count
     }
@@ -48,15 +49,14 @@
     return cell
     }
     
-    // Present a meme generator view controller when user taps on cell
+    // Present MemeVC
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    
-    let memeGeneratorVC = storyboard?.instantiateViewController(withIdentifier: "viewcontroller") as! ViewController
-    
-    memeGeneratorVC.sentTopText = memes[indexPath.row].topText
-    memeGeneratorVC.sentBottomText = memes[indexPath.row].bottomText
-    memeGeneratorVC.sentImage = memes[indexPath.row].originalImage
-    
-    present(memeGeneratorVC, animated: true, completion: nil)
+        let memeGeneratorVC = storyboard?.instantiateViewController(withIdentifier: "viewcontroller") as! ViewController
+
+        
+        memeGeneratorVC.sentTopText = memes[indexPath.row].topText
+        memeGeneratorVC.sentBottomText = memes[indexPath.row].bottomText
+        memeGeneratorVC.sentImage = memes[indexPath.row].memedImage
+        present(memeGeneratorVC, animated: true)
     }
 }
